@@ -76,8 +76,8 @@
 import { ref } from "vue";
 
 import { useModalStore } from "../stores/modal";
-import AppLoginForm from "../components/LoginForm.vue";
-import AppRegisterForm from "../components/RegisterForm.vue";
+import AppLoginForm from "./LoginForm.vue";
+import AppRegisterForm from "./RegistrationForm.vue";
 
 const store = useModalStore();
 const tab = ref("login");

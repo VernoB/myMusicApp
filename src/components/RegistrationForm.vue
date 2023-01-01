@@ -109,7 +109,11 @@
 
 <script setup>
 import { ErrorMessage } from "vee-validate";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { collection, addDoc } from "firebase/firestore";
 import { ref } from "vue";
+
+import { auth, db } from "../includes/firebase";
 
 const schema = {
   name: "required|min:3|max:100|alpha_spaces|alpha",
@@ -121,16 +125,64 @@ const schema = {
   tos: "tos_required",
 };
 
-const register = (values) => {
+const register = async (values) => {
   reg_show_alert.value = true;
   reg_on_submit.value = true;
   reg_alert_variant.value = "bg-blue-500";
   reg_alert_msg.value = "please wait ! Your account is being created";
 
+  //Create user account
+  let currentUser = null;
+  let user = null;
+  try {
+    currentUser = await createUserWithEmailAndPassword(
+      auth,
+      values?.email,
+      values?.password
+    );
+    console.log(currentUser);
+  } catch (error) {
+    let errornessage = null;
+
+    switch (error.code) {
+      case "auth/email-already-in-use":
+        errornessage = "Email already in use";
+        break;
+      case "auth/credential-already-in-use":
+        errornessage = "The credential is already linked to a User";
+        break;
+      case "auth/account-exists-with-different-credential":
+        errornessage =
+          "There are already exists an account with the email address asserted by the credential";
+        break;
+      default:
+        errornessage = " Error occured ! please try again";
+        break;
+    }
+
+    reg_on_submit.value = false;
+    reg_alert_variant.value = "bg-red-500";
+    reg_alert_msg.value = errornessage;
+    return;
+  }
+
+  //add data to the database without the password field\
+  try {
+    // console.log("data : ", values);
+    user = await addDoc(collection(db, "users"), {
+      name: values?.name,
+      email: values?.email,
+      country: values?.country,
+      age: values?.age,
+    });
+    console.log("user : ", user);
+  } catch (error) {
+    console.log(error);
+  }
   reg_alert_variant.value = "bg-green-500";
-  reg_alert_msg.value = "Success! Your account has been created";
-  console.log(values);
+  reg_alert_msg.value = `Success! Your account has been created with id ${user.id}`;
 };
+
 //for default values
 const formValues = {
   country: "USA",
