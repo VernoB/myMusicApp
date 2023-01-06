@@ -108,12 +108,14 @@
 </template>
 
 <script setup>
+import { mapWritableState } from "pinia";
 import { ErrorMessage } from "vee-validate";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { collection, addDoc } from "firebase/firestore";
-import { ref } from "vue";
+import { ref, computed } from "vue";
 
 import { auth, db } from "../includes/firebase";
+import useUserSTore from "../stores/user";
 
 const schema = {
   name: "required|min:3|max:100|alpha_spaces|alpha",
@@ -131,7 +133,12 @@ const register = async (values) => {
   reg_alert_variant.value = "bg-blue-500";
   reg_alert_msg.value = "please wait ! Your account is being created";
 
-  //Create user account
+  const userState = computed(() =>
+    mapWritableState(useUserSTore, ["userLoggedIn"])
+  );
+
+  //Create user account.
+
   let currentUser = null;
   let user = null;
   try {
