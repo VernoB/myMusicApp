@@ -186,6 +186,8 @@ const register = async (values) => {
   } catch (error) {
     console.log(error);
   }
+
+  userState.value = true;
   reg_alert_variant.value = "bg-green-500";
   reg_alert_msg.value = `Success! Your account has been created with id ${user.id}`;
 };
