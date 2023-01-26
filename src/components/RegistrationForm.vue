@@ -108,14 +108,11 @@
 </template>
 
 <script setup>
-import { mapWritableState } from "pinia";
 import { ErrorMessage } from "vee-validate";
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { collection, addDoc } from "firebase/firestore";
-import { ref, computed } from "vue";
+import { ref } from "vue";
 
-import { auth, db } from "../includes/firebase";
-import useUserSTore from "../stores/user";
+import useUserStore from "@/stores/user";
+// const {} = storeToRefs(useUserSTore());
 
 const schema = {
   name: "required|min:3|max:100|alpha_spaces|alpha",
@@ -133,21 +130,11 @@ const register = async (values) => {
   reg_alert_variant.value = "bg-blue-500";
   reg_alert_msg.value = "please wait ! Your account is being created";
 
-  const userState = computed(() =>
-    mapWritableState(useUserSTore, ["userLoggedIn"])
-  );
-
   //Create user account.
-
-  let currentUser = null;
-  let user = null;
+  const userStore = useUserStore();
   try {
-    currentUser = await createUserWithEmailAndPassword(
-      auth,
-      values?.email,
-      values?.password
-    );
-    console.log(currentUser);
+    // Create user account request
+    await userStore.register(values);
   } catch (error) {
     let errornessage = null;
 
@@ -163,6 +150,7 @@ const register = async (values) => {
           "There are already exists an account with the email address asserted by the credential";
         break;
       default:
+        console.error(error);
         errornessage = " Error occured ! please try again";
         break;
     }
@@ -174,22 +162,15 @@ const register = async (values) => {
   }
 
   //add data to the database without the password field\
-  try {
-    // console.log("data : ", values);
-    user = await addDoc(collection(db, "users"), {
-      name: values?.name,
-      email: values?.email,
-      country: values?.country,
-      age: values?.age,
-    });
-    console.log("user : ", user);
-  } catch (error) {
-    console.log(error);
-  }
+  // try {
+  //   // console.log("data : ", values);
+  //   //add user to the database without the password field
+  // } catch (error) {
+  //   console.log(error);
+  // }
 
-  userState.value = true;
   reg_alert_variant.value = "bg-green-500";
-  reg_alert_msg.value = `Success! Your account has been created with id ${user.id}`;
+  reg_alert_msg.value = `Success! Your account has been created`;
 };
 
 //for default values

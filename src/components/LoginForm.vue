@@ -35,6 +35,7 @@
 <script setup>
 import { ErrorMessage } from "vee-validate";
 import { ref } from "vue";
+
 const schemaLogin = {
   //login form
   email: "required|min:5|max:100|email",
