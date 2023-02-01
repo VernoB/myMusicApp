@@ -1,7 +1,11 @@
 import { defineStore } from "pinia";
-import { ref } from "vue";
+import { ref, watch } from "vue";
 import { setDoc, doc } from "firebase/firestore";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  updateProfile,
+} from "firebase/auth";
 
 import { auth, db } from "@/includes/firebase";
 
@@ -25,17 +29,36 @@ export default defineStore("user", () => {
         age: values?.age,
       });
 
-      await obj.user.updateProfile({
+      await updateProfile(auth, {
         displayName: values?.name,
       });
     });
     // console.log(currentUser);
+    userLoggedIn.value = true;
+  }
+  //check if data exists locally
+  if (localStorage.getItem("loggedIn")) {
+    userLoggedIn.value = JSON.parse(localStorage.getItem("loggedIn"));
   }
 
-  userLoggedIn.value = true;
+  async function authenticate(values) {
+    await signInWithEmailAndPassword(auth, values?.email, values?.password);
+    this.userLoggedIn = true;
+  }
+
+  const logout = () => {
+    userLoggedIn.value = false;
+  };
+
+  //watch for the user changes
+  watch(userLoggedIn, (userVal) =>
+    localStorage.setItem("loggedIn", JSON.stringify(userVal))
+  );
 
   return {
     userLoggedIn,
+    logout,
     register,
+    authenticate,
   };
 });

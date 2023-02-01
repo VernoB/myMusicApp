@@ -1,13 +1,13 @@
 <script setup>
-import { storeToRefs } from "pinia";
-import { computed } from "vue";
+// import { storeToRefs } from "pinia";
+// import { computed } from "vue";
 
 import HeaderVue from "@/components/HeaderVue.vue";
 import AuthVue from "@/components/AuthVue.vue";
-import useUserStore from "./stores/user";
+// import useUserStore from "./stores/user";
 
-const userLoggedIn = computed(() => storeToRefs(useUserStore()));
-console.log(userLoggedIn.value.userLoggedIn);
+// const userLoggedIn = computed(() => storeToRefs(useUserStore()));
+// console.log(userLoggedIn.value.userLoggedIn);
 </script>
 
 <template>
