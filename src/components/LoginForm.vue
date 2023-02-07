@@ -61,8 +61,12 @@ const login = async (values) => {
 
   try {
     await userStore.authenticate(values);
-    userStore.userStored;
+    // this.$router.push("/");
     // userStore.$onAction()
+    login_alertt_message.value = "Successfully logged in";
+    login_alert_variant.value = "bg-green-600";
+    login_on_submit.value = true;
+    window.location.reload();
   } catch (error) {
     const errorCode = error.code;
     const errorMessage = error.message;
@@ -76,9 +80,7 @@ const login = async (values) => {
     return;
   }
   // console.log(values);
-  login_alertt_message.value = "Successfully logged in";
-  login_alert_variant.value = "bg-green-600";
-  login_on_submit.value = true;
+  login_show_alert.value = true;
   console.log("Test successful" + userStore.userStored);
 };
 

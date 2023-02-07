@@ -75,7 +75,7 @@
 <script setup>
 import { ref } from "vue";
 
-import { useModalStore } from "../stores/modal";
+import { useModalStore } from "@/stores/modal";
 import AppLoginForm from "./LoginForm.vue";
 import AppRegisterForm from "./RegistrationForm.vue";
 

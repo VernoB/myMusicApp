@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-import { ref, watch } from "vue";
+import { ref, watch, computed } from "vue";
 import { setDoc, doc } from "firebase/firestore";
 import {
   createUserWithEmailAndPassword,
@@ -36,6 +36,7 @@ export default defineStore("user", () => {
     // console.log(currentUser);
     userLoggedIn.value = true;
   }
+
   //check if data exists locally
   if (localStorage.getItem("loggedIn")) {
     userLoggedIn.value = JSON.parse(localStorage.getItem("loggedIn"));
@@ -46,11 +47,12 @@ export default defineStore("user", () => {
     this.userLoggedIn = true;
   }
 
-  const logout = () => {
-    userLoggedIn.value = false;
-  };
+  const logout = () => userLoggedIn.value !== userLoggedIn.value;
+  //  () => {
+  //   userLoggedIn.value = false;
+  // };
 
-  //watch for the user changes
+  //watch for the user changes and save the user for self authentication
   watch(userLoggedIn, (userVal) =>
     localStorage.setItem("loggedIn", JSON.stringify(userVal))
   );

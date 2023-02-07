@@ -182,4 +182,6 @@ const reg_on_submit = ref(false),
   reg_show_alert = ref(false),
   reg_alert_variant = ref("bg-blue-500"),
   reg_alert_msg = ref("please wait ! Your account is being created");
+
+window.location.reload();
 </script>
