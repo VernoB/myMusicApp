@@ -67,12 +67,12 @@ const route = useRoute();
 
 const Applogout = () => {
   if (route.meta?.requiresAuth) {
-    // console.log(userLoggedIn);
+    // Signout the user from database
+    userStoreRef.userLogout();
     userStoreRef.$patch({
       userLoggedIn: false,
     });
 
-    // userStoreRef.logout();
     router.push({ name: "home" });
   }
 };

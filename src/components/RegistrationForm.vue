@@ -135,6 +135,10 @@ const register = async (values) => {
   try {
     // Create user account request
     await userStore.register(values);
+
+    reg_alert_variant.value = "bg-green-500";
+    reg_alert_msg.value = `Success! Your account has been created`;
+    window.location.reload();
   } catch (error) {
     let errornessage = null;
 
@@ -160,17 +164,6 @@ const register = async (values) => {
     reg_alert_msg.value = errornessage;
     return;
   }
-
-  //add data to the database without the password field\
-  // try {
-  //   // console.log("data : ", values);
-  //   //add user to the database without the password field
-  // } catch (error) {
-  //   console.log(error);
-  // }
-
-  reg_alert_variant.value = "bg-green-500";
-  reg_alert_msg.value = `Success! Your account has been created`;
 };
 
 //for default values
@@ -182,6 +175,4 @@ const reg_on_submit = ref(false),
   reg_show_alert = ref(false),
   reg_alert_variant = ref("bg-blue-500"),
   reg_alert_msg = ref("please wait ! Your account is being created");
-
-window.location.reload();
 </script>

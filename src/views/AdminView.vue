@@ -3,7 +3,7 @@
   <section class="container mx-auto mt-6">
     <div class="md:grid md:grid-cols-3 md:gap-4">
       <div class="col-span-1">
-        <AppUpload />
+        <AppUpload ref="upload" />
       </div>
       <div class="col-span-2">
         <div
@@ -51,13 +51,13 @@
                   </div>
                   <button
                     type="submit"
-                    class="py-1.5 px-3 rounded text-white bg-green-600"
+                    class="py-2 px-3 mr-1 rounded text-white bg-green-600"
                   >
                     Submit
                   </button>
                   <button
                     type="button"
-                    class="py-1.5 px-3 rounded text-white bg-gray-600"
+                    class="py-1.5 px-2 text-gray-900 mx-3 rounded border border-gray-600 bg-transparent"
                   >
                     Go Back
                   </button>
@@ -134,6 +134,16 @@
 
 <script setup>
 import AppUpload from "@/components/AppUpload.vue";
+import { onBeforeRouteLeave } from "vue-router";
+import { ref } from "vue";
+
+const upload = ref(null);
+
+onBeforeRouteLeave((to, from, next) => {
+  upload.value.cancelUpload();
+  next();
+  // console.log(to, from, upload);
+});
 </script>
 <!-- <script>
 import userStore from "@/stores/user";
