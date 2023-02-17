@@ -1,8 +1,9 @@
-import { createRouter, createWebHistory, useRouter } from "vue-router";
+import { createRouter, createWebHistory } from "vue-router";
 import HomeComponent from "@/views/HomeView.vue";
 import AboutComponent from "@/views/AboutView.vue";
 import AdminComponent from "@/views/AdminView.vue";
 import PageNotFound from "@/views/404-view.vue";
+import SongView from "@/views/SongView.vue";
 
 import userStore from "@/stores/user.js";
 
@@ -22,7 +23,7 @@ const routes = [
     name: "about",
     sensitive: false,
     meta: {
-      requiresAuth: true,
+      requiresAuth: false,
     },
   },
   {
@@ -34,6 +35,12 @@ const routes = [
       requiresAuth: true,
     },
   },
+  {
+    name: "song",
+    path: "/song/:id",
+    component: SongView,
+  },
+
   {
     path: "/:catchAll(.*)*",
     name: "errorPage",

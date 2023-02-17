@@ -54,20 +54,20 @@
 </template>
 
 <script setup>
-import { ref, onBeforeUnmount } from "vue";
+import { ref } from "vue";
 import {
   ref as refFirebase,
   uploadBytesResumable,
   getDownloadURL,
 } from "firebase/storage";
-import { addDoc } from "firebase/firestore";
+import { addDoc, getDoc } from "firebase/firestore";
 
 import { storage } from "@/includes/firebase";
 import { auth, songsCollections } from "@/includes/firebase";
 
 const is_uploaded = ref(false);
 const uploads = ref([]);
-
+const emit = defineEmits(["addSong"]);
 // onBeforeUnmount(() => {
 //   //cancel if the component unmounted
 //   uploads.value.forEach((upload) => {
@@ -172,6 +172,9 @@ const uploaded = ($event) => {
 
               //add song to the database
               const docRef = await addDoc(songsCollections, song);
+              const songSnapshot = await getDoc(docRef);
+
+              emit("addSong", songSnapshot);
 
               uploads.value[uploadsIdx].variant = "bg-green-500";
               uploads.value[uploadsIdx].icon = "fas fa-check";
