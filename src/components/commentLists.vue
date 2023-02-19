@@ -3,7 +3,9 @@
     <!-- Comment Author -->
     <div class="mb-5">
       <div class="font-bold">{{ comment.displayName }}</div>
-      <time>5 mins ago</time>
+      <time>{{
+        formatRelative(Date.parse(comment.datePosted), new Date())
+      }}</time>
     </div>
 
     <p>
@@ -12,6 +14,8 @@
   </li>
 </template>
 <script setup>
+import { formatRelative } from "date-fns";
+
 defineProps({
   comment: {
     type: Object,
