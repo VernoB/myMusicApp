@@ -35,7 +35,7 @@ export default defineStore("user", () => {
       await updateProfile(auth.currentUser, {
         displayName: values.name,
       })
-        .then((obj) => {
+        .then(() => {
           console.log("Profile updated");
         })
         .catch((err) => console.error(err));

@@ -8,6 +8,7 @@ import VeeValidatePlugin from "./includes/validation";
 
 import "./assets/base.css";
 import "./assets/main.css";
+import Icon from "@/directives/icon";
 import { auth } from "./includes/firebase";
 import useUserStore from "@/stores/user";
 
@@ -20,6 +21,7 @@ onAuthStateChanged(auth, (user) => {
     app.use(createPinia());
     app.use(router);
     app.use(VeeValidatePlugin);
+    app.directive("icon", Icon);
 
     app.mount("#app");
   }

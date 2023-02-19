@@ -13,10 +13,14 @@
   },
   "dependencies": {
     "@vee-validate/rules": "^4.7.3",
+    "animate.css": "^4.1.1",
     "firebase": "^9.15.0",
+    "howler": "^2.2.3",
     "pinia": "^2.0.28",
+    "siriwave": "^2.3.0",
     "vee-validate": "^4.7.3",
     "vue": "^3.2.45",
+    "vue-i18n": "^9.2.2",
     "vue-router": "^4.1.6"
   },
   "devDependencies": {
