@@ -46,6 +46,28 @@
             </li>
           </template>
         </ul>
+        <div class="flex items-center font-sans relative">
+          <select
+            name=""
+            id=""
+            v-model="$i18n.locale"
+            class="ml-2 after:content-none py-2 px-1 bg-slate-200 border-solid border-2 border-slate-400 rounded-md shadow-md"
+          >
+            <option
+              v-for="locale in $i18n.availableLocales"
+              :key="`locale-${locale}`"
+              :value="locale"
+            >
+              {{
+                locale === "en"
+                  ? "English"
+                  : locale === "fr"
+                  ? "French"
+                  : "Russian"
+              }}
+            </option>
+          </select>
+        </div>
       </div>
     </nav>
   </header>
@@ -54,7 +76,6 @@
 <script setup>
 import { useModalStore } from "@/stores/modal";
 import useUserStore from "@/stores/user";
-
 import { useRouter, useRoute, RouterLink } from "vue-router";
 
 const userStoreRef = useUserStore();
@@ -63,6 +84,9 @@ const modalStore = useModalStore();
 const router = useRouter();
 const route = useRoute();
 
+// const CurrentLocale = computed(() => {
+//   // return this.$i18n.locale === "fr" ? "French" : "English";
+// });
 //watch action
 
 const Applogout = () => {

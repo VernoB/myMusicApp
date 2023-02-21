@@ -1,0 +1,17 @@
+{
+  "home": {
+    "listen": "Écoutez de la bonne musique ‼",
+    "message": "Bonjour, bienvenue sur mon application. Cette application est con\u00e7ue avec figma\r\n     et construire avec Vuejs, Pinia, Vee-validate, Vue-router et autres\r\n     librairies. Quelques recommandations pour visiter l'application. j'ai impl\u00e9ment\u00e9\r\n     d\u00e9filement infini et la musique demande la base de donn\u00e9es lors du d\u00e9filement\r\n     vers le bas, vous pouvez t\u00e9l\u00e9charger la musique si vous \u00eates d'abord authentifi\u00e9,\r\n     apr\u00e8s il est possible de jouer la musique s\u00e9lectionn\u00e9e. Il est possible de\r\n     voir le code source complet sur {0}",
+    "git": "github"
+  },
+  "song": {
+    "comment_count": "Aucun commentaire | 1 Commentaire |{count} Commentaires"
+  },
+  "register": {
+    "accept": "J'accepte les musiques {0}",
+    "tos": "conditions d'utilisation"
+  },
+  "admin": {
+    "mySong": "Ma Musique"
+  }
+}

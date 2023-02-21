@@ -1,17 +1,17 @@
 <template>
   <div class="border border-gray-200 p-3 mb-4 rounded">
     <div v-show="!showForm">
-      <h4 class="inline-block text-2xl font-bold">
+      <h4 class="inline-block text-xl font-bold text-gray-800">
         {{ song.modified_name }}
       </h4>
       <button
-        class="ml-1 py-1 px-2 text-sm rounded text-white bg-red-600 float-right"
+        class="ml-1 py-1 px-2 text-lg rounded text-red-300 hover:text-red-400 hover:bg-slate-200 float-right"
         @click="deleteSong"
       >
         <i class="fa fa-times"></i>
       </button>
       <button
-        class="ml-1 py-1 px-2 text-sm rounded text-white bg-blue-600 float-right"
+        class="ml-1 py-1 px-2 text-lg rounded text-gray-500 hover:text-gray-700 hover:bg-slate-200 float-right"
         @click.prevent="showForm = !showForm"
         :key="song.docId"
       >

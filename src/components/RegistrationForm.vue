@@ -94,7 +94,13 @@
         type="checkbox"
         class="w-4 h-4 float-left -ml-6 mt-1 rounded"
       />
-      <label class="inline-block">Accept terms of service </label>
+      <i18n-t
+        class="inline-block"
+        tag="label"
+        for="register.tos"
+        keypath="register.accept"
+        ><a href="#" target="_blank">{{ $t("register.tos") }}</a>
+      </i18n-t>
     </div>
     <ErrorMessage class="text-red-600" name="tos" />
     <button

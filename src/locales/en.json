@@ -1,0 +1,17 @@
+{
+  "home": {
+    "listen": "Listen to Great Music ‼",
+    "message": "Hello, welcome to my app. This application is design with figma\r\n    and build with Vuejs, Pinia, Vee-validate, Vue-router and other\r\n    librairies. Fews recommendations to visit the app. i implented\r\n    infinite scroll and the music request the database when scroll\r\n    down, you can upload the music if you are authenticated first,\r\n    after it's possible to play the selected music. It's possible to\r\n    see the complete source code on {0}",
+    "git": "github"
+  },
+  "song": {
+    "comment_count": "no Comment | 1 Comment |{count} Comments"
+  },
+  "register": {
+    "accept": "I accept the Music's {0}",
+    "tos": "terms of service"
+  },
+  "admin": {
+    "mySong": "My song"
+  }
+}
