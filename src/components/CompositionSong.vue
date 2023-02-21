@@ -34,7 +34,7 @@
         @submit="edit"
       >
         <div class="mb-3">
-          <label class="inline-block mb-2">Song Title</label>
+          <label class="inline-block mb-2">{{ $t("admin.title") }}</label>
           <vee-field
             type="text"
             name="modified_name"

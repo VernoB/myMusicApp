@@ -14,14 +14,14 @@
         <!-- Primary Navigation -->
         <ul class="flex flex-row mt-1 font-sans no-underline">
           <li v-if="!userStoreRef.userLoggedIn">
-            <a
-              href="#"
+            <RouterLink
+              to="#"
               class="px-2 text-white"
               placeholder="login/register"
               @click.prevent="modalStore.isOpenStore"
             >
               Login/register
-            </a>
+            </RouterLink>
           </li>
           <template v-else>
             <!-- Navigation Links -->

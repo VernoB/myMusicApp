@@ -1,17 +1,25 @@
 import { createApp } from "vue";
 import { createPinia } from "pinia";
 import { onAuthStateChanged } from "firebase/auth";
+import { enableIndexedDbPersistence } from "firebase/firestore";
 
 import App from "./App.vue";
 import router from "./router";
 import VeeValidatePlugin from "./includes/validation";
+import { registerSW } from "virtual:pwa-register";
+
+registerSW({ immediate: true });
 
 import "./assets/base.css";
 import "./assets/main.css";
 import Icon from "@/directives/icon";
-import { auth } from "./includes/firebase";
+import { auth, db } from "./includes/firebase";
 import useUserStore from "@/stores/user";
 import i18n from "./includes/Vue-18n";
+
+enableIndexedDbPersistence(db).catch((error) => {
+  console.log(error.code);
+});
 
 let app;
 

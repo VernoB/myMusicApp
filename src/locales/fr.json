@@ -12,6 +12,7 @@
     "tos": "conditions d'utilisation"
   },
   "admin": {
-    "mySong": "Ma Musique"
+    "mySong": "Ma Musique",
+    "title": "Titre de la chanson"
   }
 }

@@ -87,6 +87,19 @@ const uploaded = ($event) => {
   files.forEach((file) => {
     const { name, type } = file;
 
+    //check if the user are offline
+    if (!navigator.onLine) {
+      uploads.value.push({
+        uploadTask: {},
+        name: name.split(" ").join("_"),
+        current_progress: 100,
+        variant: "bg-red-400",
+        icon: "fas fa-times",
+        text_class: "text-red-400",
+      });
+      return;
+    }
+
     if (type === "audio/mpeg" || type === "audio/wav") {
       //the file is an audio/mpeg file
       const songsRef = refFirebase(

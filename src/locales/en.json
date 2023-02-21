@@ -12,6 +12,7 @@
     "tos": "terms of service"
   },
   "admin": {
-    "mySong": "My song"
+    "mySong": "My song",
+    "title": "Song Title"
   }
 }
