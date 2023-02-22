@@ -17,11 +17,11 @@
           </figure>
         </div>
 
-        <div>
-          <h1 class="font-serif text-4xl font-semibold text-cyan-900 py-6">
-            About Mu<span class="font-light">sic</span>
+        <div class="ml-2">
+          <h1 class="font-serif text-4xl font-semibold text-cyan-900 pt-1 pb-6">
+            About Mu<span class="font-light">sic app</span>
           </h1>
-          <p class="text-xl text-gray-500">
+          <p class="text-2xl text-gray-500">
             It's a great application with all feature that Vue offers designed
             and thinking to show you my works, some of the features used in with
             Composition Api are :
@@ -38,7 +38,7 @@
             <li>Transition</li>
             <li>Performance Optimization</li>
           </ul>
-          <p class="text-xl text-gray-500">
+          <p class="text-2xl text-gray-500">
             We also use tools and libraries likes :
           </p>
           <ul class="text-gray-500 mx-8 list-disc list-outside py-4 columns-2">
@@ -53,7 +53,7 @@
             <li>Figma for wireframe</li>
             <li>And eslint</li>
           </ul>
-          <span class="text-gray-500 block pt-8">
+          <span class="text-gray-500 block pt-8 text-xl">
             I will be happy to hear about you soon
             <i class="text-cyan-900 fa fa-heart"></i
           ></span>

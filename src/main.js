@@ -8,14 +8,17 @@ import router from "./router";
 import VeeValidatePlugin from "./includes/validation";
 import { registerSW } from "virtual:pwa-register";
 
-registerSW({ immediate: true });
-
 import "./assets/base.css";
 import "./assets/main.css";
 import Icon from "@/directives/icon";
 import { auth, db } from "./includes/firebase";
 import useUserStore from "@/stores/user";
 import i18n from "./includes/Vue-18n";
+import NProgress from "./includes/progress-bar";
+import "nprogress/nprogress.css";
+
+registerSW({ immediate: true });
+NProgress(router);
 
 enableIndexedDbPersistence(db).catch((error) => {
   console.log(error.code);

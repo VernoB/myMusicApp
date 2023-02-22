@@ -1,11 +1,12 @@
 import { createRouter, createWebHistory } from "vue-router";
-import HomeComponent from "@/views/HomeView.vue";
-import AboutComponent from "@/views/AboutView.vue";
-import AdminComponent from "@/views/AdminView.vue";
-import PageNotFound from "@/views/404-view.vue";
-import SongView from "@/views/SongView.vue";
-
 import userStore from "@/stores/user.js";
+
+//Lazy loading Routes
+const HomeComponent = () => import("@/views/HomeView.vue");
+const AboutComponent = () => import("@/views/AboutView.vue");
+const AdminComponent = () => import("@/views/AdminView.vue");
+const PageNotFound = () => import("@/views/404-view.vue");
+const SongView = () => import("@/views/SongView.vue");
 
 const routes = [
   {
