@@ -1,7 +1,10 @@
 <template>
   <main>
-    <div class="container max-w-6xl mx-auto my-16 px-10 antialiased">
-      <div id="about" class="grid grid-cols-2 gap-8">
+    <div class="container max-w-6xl mx-auto my-16 px-10 antialiased prose">
+      <div
+        id="about"
+        class="grid gap-8 grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:gap-4 lg:grid-cols-2"
+      >
         <div>
           <figure class="relative">
             <img
@@ -10,18 +13,20 @@
               alt=""
             />
             <figcaption
-              class="px-4 py-4 rounded-tl-2xl rounded-br-2xl overflow-hidden absolute bottom-0 rounded-b-sm bg-gradient-to-bl from-blue-500 to-teal-500"
+              class="px-2 py-2 md:px-3 md:py-3 lg:px-4 lg:py-4 sm:mr-4 rounded-tl-2xl rounded-br-2xl overflow-hidden absolute bottom-0 rounded-b-sm bg-gradient-to-bl from-blue-500 to-teal-500"
             >
               My desire is to improved more myself.
             </figcaption>
           </figure>
         </div>
 
-        <div class="ml-2">
-          <h1 class="font-serif text-4xl font-semibold text-cyan-900 pt-1 pb-6">
+        <div class="ml-2 text-xs md:text-xl lg:text-2xl">
+          <h1
+            class="font-serif text-xl md:text-2xl lg:text-3xl font-semibold text-cyan-900 pt-1 pb-6"
+          >
             About Mu<span class="font-light">sic app</span>
           </h1>
-          <p class="text-2xl text-gray-500">
+          <p class="text-xs md:text-xl lg:text-2xl text-gray-500">
             It's a great application with all feature that Vue offers designed
             and thinking to show you my works, some of the features used in with
             Composition Api are :
@@ -38,9 +43,7 @@
             <li>Transition</li>
             <li>Performance Optimization</li>
           </ul>
-          <p class="text-2xl text-gray-500">
-            We also use tools and libraries likes :
-          </p>
+          <p class="text-gray-500">We also use tools and libraries likes :</p>
           <ul class="text-gray-500 mx-8 list-disc list-outside py-4 columns-2">
             <li>Pinia</li>
             <li>Vee-validate</li>
