@@ -40,7 +40,7 @@
           <svg
             viewBox="0 0 24 24"
             fill="currentColor"
-            class="w-8 h-8 ml-2 fill-gray-500 absolute z-50 active:outline-none"
+            class="w-5 h-5 lg:w-8 lg:h-8 ml-2 fill-gray-500 absolute z-50 active:outline-none"
           >
             <path
               fill-rule="evenodd"
@@ -55,7 +55,7 @@
               name="Search song"
               id=""
               placeholder="Search for song ..."
-              class="w-[50%] text-2xl text-gray-700 py-6 pl-12 pr-4 bg-white transition-all border-gray-400 ring-inset ring-2 translate-x-1 delay-75 animate-pulse focus:animate-none rounded-md placeholder:text-xl focus:w-full"
+              class="w-[50%] text-xl md:text-xl lg:text-2xl text-gray-700 md:py-4 pl-8 py-3 md:pr-3 lg:py-6 lg:pl-12 lg:pr-4 bg-white transition-all border-gray-400 ring-inset ring-2 translate-x-1 delay-75 animate-pulse focus:animate-none rounded-md sm:placeholder:text-sm lg:placeholder:text-xl focus:w-[80%] lg:focus:w-full sm:focus:text-sm"
               v-model="searchSong"
             />
           </form>
