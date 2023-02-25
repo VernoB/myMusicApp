@@ -58,7 +58,7 @@
               v-for="locale in $i18n.availableLocales"
               :key="`locale-${locale}`"
               :value="locale"
-              class="bg-gray-800 flex text-white pt-2 rounded-b-md"
+              class="bg-gray-800 flex border border-spacing-4 border-b-2 border-slate-200 text-white pt-2 rounded-b-md"
             >
               {{
                 locale === "en"

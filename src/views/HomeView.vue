@@ -34,6 +34,33 @@
 
     <!-- Main Content -->
     <section class="container mx-auto">
+      <!-- search form -->
+      <div class="max-w-full py-8">
+        <div class="max-w-2xl relative px-4 flex items-center">
+          <svg
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            class="w-8 h-8 ml-2 fill-gray-500 absolute z-50 active:outline-none"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M10.5 3.75a6.75 6.75 0 100 13.5 6.75 6.75 0 000-13.5zM2.25 10.5a8.25 8.25 0 1114.59 5.28l4.69 4.69a.75.75 0 11-1.06 1.06l-4.69-4.69A8.25 8.25 0 012.25 10.5z"
+              clip-rule="evenodd"
+            />
+          </svg>
+
+          <form action="" class="w-full">
+            <input
+              type="text"
+              name="Search song"
+              id=""
+              placeholder="Search for song ..."
+              class="w-[50%] text-2xl text-gray-700 py-6 pl-12 pr-4 bg-white transition-all border-gray-400 ring-inset ring-2 translate-x-1 delay-75 animate-pulse focus:animate-none rounded-md placeholder:text-xl focus:w-full"
+              v-model="searchSong"
+            />
+          </form>
+        </div>
+      </div>
       <div
         class="bg-white rounded border border-gray-200 relative flex flex-col"
       >
@@ -46,7 +73,11 @@
         </div>
         <!-- Playlist -->
         <ol id="playlist">
-          <SongItem v-for="song in songs" :key="song.docId" :song="song" />
+          <SongItem
+            v-for="song in searchSongs"
+            :key="song.docId"
+            :song="song"
+          />
         </ol>
         <!-- .. end Playlist -->
       </div>
@@ -79,7 +110,25 @@ export default {
       pendingRequests: false,
       windowObjectReference: null,
       url: "https://github.com/VernoB/myMusicApp",
+      searchSong: "",
     };
+  },
+
+  computed: {
+    // this.songs = this.songs.filter((song) => song.include(this.searchSong));
+    searchSongs() {
+      if (this.searchSong) {
+        return this.songs.filter((song) => {
+          console.log(song);
+          return this.searchSong
+            .toLowerCase()
+            .split(" ")
+            .every((s) => song.modified_name.toLowerCase().includes(s));
+        });
+      } else {
+        return this.songs;
+      }
+    },
   },
   async created() {
     await this.getSongs();
